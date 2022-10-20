@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C028FC71E000D85174 /* TrantalyaApp.swift */; };
-		829A18C328FC71E000D85174 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C228FC71E000D85174 /* ContentView.swift */; };
+		829A18C328FC71E000D85174 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C228FC71E000D85174 /* MainView.swift */; };
 		829A18C528FC71E100D85174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829A18C428FC71E100D85174 /* Assets.xcassets */; };
 		829A18C828FC71E100D85174 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829A18C728FC71E100D85174 /* Preview Assets.xcassets */; };
 		829A18D228FC71E100D85174 /* TrantalyaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18D128FC71E100D85174 /* TrantalyaTests.swift */; };
 		829A18DC28FC71E100D85174 /* TrantalyaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18DB28FC71E100D85174 /* TrantalyaUITests.swift */; };
 		829A18DE28FC71E100D85174 /* TrantalyaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18DD28FC71E100D85174 /* TrantalyaUITestsLaunchTests.swift */; };
+		829A18EC28FC729100D85174 /* MainSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18EB28FC729100D85174 /* MainSessionProtocol.swift */; };
+		829A18EE28FC745B00D85174 /* MainSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18ED28FC745B00D85174 /* MainSession.swift */; };
+		829A18F128FDB5BB00D85174 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18F028FDB5BB00D85174 /* Route.swift */; };
+		829A18F328FDB6FF00D85174 /* BusListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18F228FDB6FF00D85174 /* BusListResponse.swift */; };
+		829A18F528FDEE1900D85174 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18F428FDEE1900D85174 /* Bus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,7 @@
 /* Begin PBXFileReference section */
 		829A18BD28FC71E000D85174 /* Trantalya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trantalya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		829A18C028FC71E000D85174 /* TrantalyaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrantalyaApp.swift; sourceTree = "<group>"; };
-		829A18C228FC71E000D85174 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		829A18C228FC71E000D85174 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		829A18C428FC71E100D85174 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		829A18C728FC71E100D85174 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		829A18CD28FC71E100D85174 /* TrantalyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrantalyaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +49,11 @@
 		829A18D728FC71E100D85174 /* TrantalyaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrantalyaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		829A18DB28FC71E100D85174 /* TrantalyaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrantalyaUITests.swift; sourceTree = "<group>"; };
 		829A18DD28FC71E100D85174 /* TrantalyaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrantalyaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		829A18EB28FC729100D85174 /* MainSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionProtocol.swift; sourceTree = "<group>"; };
+		829A18ED28FC745B00D85174 /* MainSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSession.swift; sourceTree = "<group>"; };
+		829A18F028FDB5BB00D85174 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		829A18F228FDB6FF00D85174 /* BusListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListResponse.swift; sourceTree = "<group>"; };
+		829A18F428FDEE1900D85174 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +104,9 @@
 		829A18BF28FC71E000D85174 /* Trantalya */ = {
 			isa = PBXGroup;
 			children = (
+				829A18F628FEEA8200D85174 /* Model */,
+				829A18F728FEEA9E00D85174 /* View */,
 				829A18C028FC71E000D85174 /* TrantalyaApp.swift */,
-				829A18C228FC71E000D85174 /* ContentView.swift */,
 				829A18C428FC71E100D85174 /* Assets.xcassets */,
 				829A18C628FC71E100D85174 /* Preview Content */,
 			);
@@ -125,6 +136,58 @@
 				829A18DD28FC71E100D85174 /* TrantalyaUITestsLaunchTests.swift */,
 			);
 			path = TrantalyaUITests;
+			sourceTree = "<group>";
+		};
+		829A18EA28FC721400D85174 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				829A18F928FEEADF00D85174 /* Session */,
+				829A18EF28FDB57B00D85174 /* BusListStructs */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		829A18EF28FDB57B00D85174 /* BusListStructs */ = {
+			isa = PBXGroup;
+			children = (
+				829A18F028FDB5BB00D85174 /* Route.swift */,
+				829A18F428FDEE1900D85174 /* Bus.swift */,
+				829A18F228FDB6FF00D85174 /* BusListResponse.swift */,
+			);
+			path = BusListStructs;
+			sourceTree = "<group>";
+		};
+		829A18F628FEEA8200D85174 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				829A18EA28FC721400D85174 /* Network */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		829A18F728FEEA9E00D85174 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				829A18F828FEEAB200D85174 /* MainScreen */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		829A18F828FEEAB200D85174 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				829A18C228FC71E000D85174 /* MainView.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		829A18F928FEEADF00D85174 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				829A18EB28FC729100D85174 /* MainSessionProtocol.swift */,
+				829A18ED28FC745B00D85174 /* MainSession.swift */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +320,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				829A18C328FC71E000D85174 /* ContentView.swift in Sources */,
+				829A18F528FDEE1900D85174 /* Bus.swift in Sources */,
+				829A18C328FC71E000D85174 /* MainView.swift in Sources */,
+				829A18EE28FC745B00D85174 /* MainSession.swift in Sources */,
+				829A18EC28FC729100D85174 /* MainSessionProtocol.swift in Sources */,
+				829A18F328FDB6FF00D85174 /* BusListResponse.swift in Sources */,
 				829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */,
+				829A18F128FDB5BB00D85174 /* Route.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
