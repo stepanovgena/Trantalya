@@ -51,8 +51,36 @@ final class MainSession: MainSessionProtocol {
         return routes
     }
     
-    func getRouteTimetable(id: String) {
-        
+    func getRouteSchedule(id: String) async throws -> RouteSchedule {
+        let params = makeDefaultParams() +
+        [
+            ("displayRouteCode", id)
+        ]
+        guard let url = urlFactory.makeUrl(
+            pathComponent: "v2.0/route/info",
+            params: params
+        ) else {
+            throw NetworkError.urlError
+        }
+        let request = URLRequest(
+            url: url,
+            cachePolicy: .reloadIgnoringLocalCacheData,
+            timeoutInterval: 30
+        )
+        let (data, response) = try await session.data(for: request)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw NetworkError.responseCodeError
+        }
+        let decoder = JSONDecoder()
+        let scheduleResponse = try decoder.decode(ScheduleResponse.self, from: data)
+        let routeName = scheduleResponse.pathList.first?.displayRouteCode ?? ""
+        let times = scheduleResponse.pathList.first?.scheduleList.first?.timeList.map {
+            $0.departureTime.split(separator: ":").prefix(2).joined(separator: ":")
+        }
+        return RouteSchedule(
+            routeName: routeName,
+            schedule: times ?? []
+        )
     }
 }
 

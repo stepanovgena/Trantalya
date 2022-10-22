@@ -10,14 +10,16 @@ import SwiftUI
 struct MainView: View {
     @State private var busStopInput = ""
     @State private var routes = [Route]()
-    
+    @State private var routeSchedules = [RouteSchedule]()
+
     var body: some View {
         VStack {
-            List(routes, id: \.displayRouteCode) { route in
-                Text(route.displayRouteCode)
-                    .font(.headline)
+            ScrollView{
+                ForEach(routeSchedules, id: \.routeName) {
+                    RouteScheduleView(routeSchedule: $0)
+                }
             }
-            .listStyle(.plain)
+            Spacer()
             Divider()
             HStack {
                 TextField(
@@ -51,7 +53,20 @@ struct MainView: View {
         )
             Task {
             do {
-                routes = try await session.getStopRoutes(id: stopId)
+                let routes = try await session.getStopRoutes(id: stopId)
+                try await withThrowingTaskGroup(of: RouteSchedule.self, body: { group in
+                    for route in routes {
+                        group.addTask {
+                            let routeSchedule = try await session.getRouteSchedule(id: route.displayRouteCode)
+                            return routeSchedule
+                        }
+                    }
+                    for try await routeSchedule in group {
+                        routeSchedules.append(
+                            routeSchedule
+                        )
+                    }
+                })
             }
             catch {
                 print(error)
