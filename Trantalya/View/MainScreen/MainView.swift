@@ -11,12 +11,21 @@ struct MainView: View {
     @State private var busStopInput = ""
     @State private var routes = [Route]()
     @State private var routeSchedules = [RouteSchedule]()
-
+    @State private var isLoading = false
+    private let timeColorResolver = TimeColorResolver()
+   
     var body: some View {
         VStack {
             ScrollView{
-                ForEach(routeSchedules, id: \.routeName) {
-                    RouteScheduleView(routeSchedule: $0)
+                if routeSchedules.isEmpty && isLoading {
+                    ScheduleSkeletonView()
+                } else {
+                    ForEach(routeSchedules, id: \.routeName) {
+                        RouteScheduleView(
+                            routeSchedule: $0,
+                            timeColorResolver: timeColorResolver
+                        )
+                    }
                 }
             }
             Spacer()
@@ -44,9 +53,12 @@ struct MainView: View {
             }
             .padding()
         }
+        .navigationTitle("Schedule")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     func loadData(stopId: String) {
+        isLoading = true
         let session = MainSession(
             session: URLSession.shared,
             urlFactory: UrlFactory()
@@ -61,11 +73,15 @@ struct MainView: View {
                             return routeSchedule
                         }
                     }
+                    routeSchedules = []
+                    var tempRouteSchedules = [RouteSchedule]()
                     for try await routeSchedule in group {
-                        routeSchedules.append(
+                        tempRouteSchedules.append(
                             routeSchedule
                         )
                     }
+                    isLoading = false
+                    routeSchedules = tempRouteSchedules.sorted(by: { $0.routeName < $1.routeName })
                 })
             }
             catch {

@@ -25,6 +25,11 @@
 		829A191829027FCD00D85174 /* RouteSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A191729027FCD00D85174 /* RouteSchedule.swift */; };
 		829A191A2902828800D85174 /* TimeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A19192902828800D85174 /* TimeTag.swift */; };
 		829A191C290283B500D85174 /* RouteScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A191B290283B500D85174 /* RouteScheduleView.swift */; };
+		829A191F29043E3900D85174 /* TimeColorResolverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A191E29043E3900D85174 /* TimeColorResolverProtocol.swift */; };
+		829A192129043EB400D85174 /* TimeColorResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A192029043EB400D85174 /* TimeColorResolver.swift */; };
+		829A19232904501C00D85174 /* ScheduleSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A19222904501C00D85174 /* ScheduleSkeletonView.swift */; };
+		829A1926290451EE00D85174 /* SkeletonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 829A1925290451EE00D85174 /* SkeletonUI */; };
+		829A19292904554200D85174 /* BaseSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A19282904554200D85174 /* BaseSkeletonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,10 @@
 		829A191729027FCD00D85174 /* RouteSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSchedule.swift; sourceTree = "<group>"; };
 		829A19192902828800D85174 /* TimeTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTag.swift; sourceTree = "<group>"; };
 		829A191B290283B500D85174 /* RouteScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteScheduleView.swift; sourceTree = "<group>"; };
+		829A191E29043E3900D85174 /* TimeColorResolverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeColorResolverProtocol.swift; sourceTree = "<group>"; };
+		829A192029043EB400D85174 /* TimeColorResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeColorResolver.swift; sourceTree = "<group>"; };
+		829A19222904501C00D85174 /* ScheduleSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSkeletonView.swift; sourceTree = "<group>"; };
+		829A19282904554200D85174 /* BaseSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSkeletonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				829A1926290451EE00D85174 /* SkeletonUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +184,7 @@
 		829A18F628FEEA8200D85174 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				829A191D29043DF300D85174 /* Utils */,
 				829A18EA28FC721400D85174 /* Network */,
 			);
 			path = Model;
@@ -182,6 +193,7 @@
 		829A18F728FEEA9E00D85174 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				829A19272904552B00D85174 /* SkeletonView */,
 				829A18F828FEEAB200D85174 /* MainScreen */,
 			);
 			path = View;
@@ -224,6 +236,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		829A191D29043DF300D85174 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				829A191E29043E3900D85174 /* TimeColorResolverProtocol.swift */,
+				829A192029043EB400D85174 /* TimeColorResolver.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		829A19272904552B00D85174 /* SkeletonView */ = {
+			isa = PBXGroup;
+			children = (
+				829A19222904501C00D85174 /* ScheduleSkeletonView.swift */,
+				829A19282904554200D85174 /* BaseSkeletonView.swift */,
+			);
+			path = SkeletonView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,6 +270,9 @@
 			dependencies = (
 			);
 			name = Trantalya;
+			packageProductDependencies = (
+				829A1925290451EE00D85174 /* SkeletonUI */,
+			);
 			productName = Trantalya;
 			productReference = 829A18BD28FC71E000D85174 /* Trantalya.app */;
 			productType = "com.apple.product-type.application";
@@ -312,6 +345,9 @@
 				Base,
 			);
 			mainGroup = 829A18B428FC71E000D85174;
+			packageReferences = (
+				829A1924290451EE00D85174 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
+			);
 			productRefGroup = 829A18BE28FC71E000D85174 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -356,13 +392,17 @@
 			files = (
 				829A18F528FDEE1900D85174 /* Bus.swift in Sources */,
 				829A191C290283B500D85174 /* RouteScheduleView.swift in Sources */,
+				829A19232904501C00D85174 /* ScheduleSkeletonView.swift in Sources */,
 				829A191829027FCD00D85174 /* RouteSchedule.swift in Sources */,
 				829A18C328FC71E000D85174 /* MainView.swift in Sources */,
 				829A18EE28FC745B00D85174 /* MainSession.swift in Sources */,
 				829A18EC28FC729100D85174 /* MainSessionProtocol.swift in Sources */,
+				829A19292904554200D85174 /* BaseSkeletonView.swift in Sources */,
+				829A191F29043E3900D85174 /* TimeColorResolverProtocol.swift in Sources */,
 				829A18F328FDB6FF00D85174 /* BusListResponse.swift in Sources */,
 				829A19152901B30E00D85174 /* ScheduleResponse.swift in Sources */,
 				829A191A2902828800D85174 /* TimeTag.swift in Sources */,
+				829A192129043EB400D85174 /* TimeColorResolver.swift in Sources */,
 				829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */,
 				829A19132901AC5900D85174 /* Time.swift in Sources */,
 				829A19112901AC2F00D85174 /* Schedule.swift in Sources */,
@@ -691,6 +731,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		829A1924290451EE00D85174 /* XCRemoteSwiftPackageReference "SkeletonUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CSolanaM/SkeletonUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		829A1925290451EE00D85174 /* SkeletonUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 829A1924290451EE00D85174 /* XCRemoteSwiftPackageReference "SkeletonUI" */;
+			productName = SkeletonUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 829A18B528FC71E000D85174 /* Project object */;
 }

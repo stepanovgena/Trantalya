@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RouteScheduleView: View {
     let routeSchedule: RouteSchedule
+    let timeColorResolver: TimeColorResolverProtocol
     var body: some View {
         ZStack {
             Rectangle()
@@ -32,7 +33,7 @@ struct RouteScheduleView: View {
                     ]
                 ) {
                     ForEach(routeSchedule.schedule, id: \.self) { schedule in
-                        TimeTag(time: schedule)
+                        TimeTag(time: schedule, colorResolver: timeColorResolver)
                     }
                 }
                 .padding(.horizontal)
@@ -60,7 +61,8 @@ struct RouteScheduleView_Previews: PreviewProvider {
                                         "09:07",
                                         "09:08",
                                     ]
-                                )
+                                ),
+                              timeColorResolver: TimeColorResolver()
             )
         }
     }
