@@ -51,10 +51,11 @@ final class MainSession: MainSessionProtocol {
         return routes
     }
     
-    func getRouteSchedule(id: String) async throws -> RouteSchedule {
+    func getRouteSchedule(routeId: String, stopId: String) async throws -> RouteSchedule {
         let params = makeDefaultParams() +
         [
-            ("displayRouteCode", id)
+            ("displayRouteCode", routeId),
+            ("busStopId", stopId)
         ]
         guard let url = urlFactory.makeUrl(
             pathComponent: "v2.0/route/info",
@@ -74,9 +75,12 @@ final class MainSession: MainSessionProtocol {
         let decoder = JSONDecoder()
         let scheduleResponse = try decoder.decode(ScheduleResponse.self, from: data)
         let routeName = scheduleResponse.pathList.first?.displayRouteCode ?? ""
-        let times = scheduleResponse.pathList.first?.scheduleList.first?.timeList.map {
-            $0.departureTime.split(separator: ":").prefix(2).joined(separator: ":")
-        }
+        let times = scheduleResponse.pathList.first?.scheduleList
+            .filter({ $0.days == .businessDays })
+            .first?.timeList
+            .map {
+                $0.departureTime.split(separator: ":").prefix(2).joined(separator: ":")
+            }
         return RouteSchedule(
             routeName: routeName,
             schedule: times ?? []

@@ -9,5 +9,5 @@ import Foundation
 
 protocol MainSessionProtocol {
     func getStopRoutes(id: String) async throws -> [Route]
-    func getRouteSchedule(id: String) async throws -> RouteSchedule
+    func getRouteSchedule(routeId: String, stopId: String) async throws -> RouteSchedule
 }

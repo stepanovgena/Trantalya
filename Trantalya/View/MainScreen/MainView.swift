@@ -15,6 +15,7 @@ struct MainView: View {
     private let timeColorResolver = TimeColorResolver()
    
     var body: some View {
+        NavigationView {
         VStack {
             ScrollView{
                 if routeSchedules.isEmpty && isLoading {
@@ -54,7 +55,8 @@ struct MainView: View {
             .padding()
         }
         .navigationTitle("Schedule")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
+        }
     }
     
     func loadData(stopId: String) {
@@ -69,7 +71,10 @@ struct MainView: View {
                 try await withThrowingTaskGroup(of: RouteSchedule.self, body: { group in
                     for route in routes {
                         group.addTask {
-                            let routeSchedule = try await session.getRouteSchedule(id: route.displayRouteCode)
+                            let routeSchedule = try await session.getRouteSchedule(
+                                routeId: route.displayRouteCode,
+                                stopId: stopId
+                            )
                             return routeSchedule
                         }
                     }
