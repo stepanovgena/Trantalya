@@ -47,7 +47,6 @@ final class MainSession: MainSessionProtocol {
                 headSign: $0.headSign
             )
         }
-        print(routes.map { $0.displayRouteCode })
         return routes
     }
     

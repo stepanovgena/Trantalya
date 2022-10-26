@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct BusStopScheduleList: View {
     @State private var busStopInput = ""
     @State private var routes = [Route]()
     @State private var routeSchedules = [RouteSchedule]()
@@ -111,6 +111,6 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        BusStopScheduleList()
     }
 }

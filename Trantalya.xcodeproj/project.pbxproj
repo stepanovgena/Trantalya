@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C028FC71E000D85174 /* TrantalyaApp.swift */; };
-		829A18C328FC71E000D85174 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C228FC71E000D85174 /* MainView.swift */; };
+		829A18C328FC71E000D85174 /* BusStopScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C228FC71E000D85174 /* BusStopScheduleList.swift */; };
 		829A18C528FC71E100D85174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829A18C428FC71E100D85174 /* Assets.xcassets */; };
 		829A18C828FC71E100D85174 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829A18C728FC71E100D85174 /* Preview Assets.xcassets */; };
 		829A18D228FC71E100D85174 /* TrantalyaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18D128FC71E100D85174 /* TrantalyaTests.swift */; };
@@ -55,7 +55,7 @@
 /* Begin PBXFileReference section */
 		829A18BD28FC71E000D85174 /* Trantalya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trantalya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		829A18C028FC71E000D85174 /* TrantalyaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrantalyaApp.swift; sourceTree = "<group>"; };
-		829A18C228FC71E000D85174 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		829A18C228FC71E000D85174 /* BusStopScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopScheduleList.swift; sourceTree = "<group>"; };
 		829A18C428FC71E100D85174 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		829A18C728FC71E100D85174 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		829A18CD28FC71E100D85174 /* TrantalyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrantalyaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,9 +132,8 @@
 		829A18BF28FC71E000D85174 /* Trantalya */ = {
 			isa = PBXGroup;
 			children = (
-				829A191629027FAD00D85174 /* ViewModel */,
-				829A18F628FEEA8200D85174 /* Model */,
-				829A18F728FEEA9E00D85174 /* View */,
+				829A1933290935F500D85174 /* Shared */,
+				829A1930290934DD00D85174 /* BusStopScheduleList */,
 				829A18C028FC71E000D85174 /* TrantalyaApp.swift */,
 				829A18C428FC71E100D85174 /* Assets.xcassets */,
 				829A18C628FC71E100D85174 /* Preview Content */,
@@ -171,8 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				829A18F928FEEADF00D85174 /* Session */,
-				829A18EF28FDB57B00D85174 /* BusListStructs */,
-				829A190F2901AC0B00D85174 /* ScheduleStructs */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -200,19 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				829A19272904552B00D85174 /* SkeletonView */,
-				829A18F828FEEAB200D85174 /* MainScreen */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		829A18F828FEEAB200D85174 /* MainScreen */ = {
-			isa = PBXGroup;
-			children = (
-				829A18C228FC71E000D85174 /* MainView.swift */,
-				829A19192902828800D85174 /* TimeTag.swift */,
-				829A191B290283B500D85174 /* RouteScheduleView.swift */,
-			);
-			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		829A18F928FEEADF00D85174 /* Session */ = {
@@ -257,10 +243,48 @@
 		829A19272904552B00D85174 /* SkeletonView */ = {
 			isa = PBXGroup;
 			children = (
-				829A19222904501C00D85174 /* ScheduleSkeletonView.swift */,
 				829A19282904554200D85174 /* BaseSkeletonView.swift */,
 			);
 			path = SkeletonView;
+			sourceTree = "<group>";
+		};
+		829A1930290934DD00D85174 /* BusStopScheduleList */ = {
+			isa = PBXGroup;
+			children = (
+				829A1932290935C500D85174 /* Model */,
+				829A19312909356E00D85174 /* View */,
+				829A191629027FAD00D85174 /* ViewModel */,
+			);
+			path = BusStopScheduleList;
+			sourceTree = "<group>";
+		};
+		829A19312909356E00D85174 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				829A19222904501C00D85174 /* ScheduleSkeletonView.swift */,
+				829A19192902828800D85174 /* TimeTag.swift */,
+				829A191B290283B500D85174 /* RouteScheduleView.swift */,
+				829A18C228FC71E000D85174 /* BusStopScheduleList.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		829A1932290935C500D85174 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				829A18EF28FDB57B00D85174 /* BusListStructs */,
+				829A190F2901AC0B00D85174 /* ScheduleStructs */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		829A1933290935F500D85174 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				829A18F728FEEA9E00D85174 /* View */,
+				829A18F628FEEA8200D85174 /* Model */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,7 +427,7 @@
 				829A191C290283B500D85174 /* RouteScheduleView.swift in Sources */,
 				829A19232904501C00D85174 /* ScheduleSkeletonView.swift in Sources */,
 				829A191829027FCD00D85174 /* RouteSchedule.swift in Sources */,
-				829A18C328FC71E000D85174 /* MainView.swift in Sources */,
+				829A18C328FC71E000D85174 /* BusStopScheduleList.swift in Sources */,
 				829A18EE28FC745B00D85174 /* MainSession.swift in Sources */,
 				829A18EC28FC729100D85174 /* MainSessionProtocol.swift in Sources */,
 				829A19292904554200D85174 /* BaseSkeletonView.swift in Sources */,
