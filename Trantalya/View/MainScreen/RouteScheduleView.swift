@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RouteScheduleView: View {
-    let routeSchedule: RouteSchedule
+    let routeSchedule: RouteSingleSchedule
     let timeColorResolver: TimeColorResolverProtocol
     var body: some View {
         ZStack {
@@ -17,7 +17,7 @@ struct RouteScheduleView: View {
                 .cornerRadius(12)
             VStack {
                 HStack {
-                    Text(routeSchedule.routeName)
+                    Text(routeSchedule.name)
                         .font(.headline)
                         .padding(.horizontal)
                     Spacer()
@@ -32,8 +32,8 @@ struct RouteScheduleView: View {
                         GridItem()
                     ]
                 ) {
-                    ForEach(routeSchedule.schedule, id: \.self) { schedule in
-                        TimeTag(time: schedule, colorResolver: timeColorResolver)
+                    ForEach(routeSchedule.times, id: \.self) { time in
+                        TimeTag(time: time, colorResolver: timeColorResolver)
                     }
                 }
                 .padding(.horizontal)
@@ -49,9 +49,9 @@ struct RouteScheduleView_Previews: PreviewProvider {
             Rectangle()
                 .foregroundColor(.gray)
             RouteScheduleView(routeSchedule:
-                                RouteSchedule(
-                                    routeName: "555",
-                                    schedule: [
+                                RouteSingleSchedule(
+                                    name: "555",
+                                    times: [
                                         "09:01",
                                         "09:02",
                                         "09:03",

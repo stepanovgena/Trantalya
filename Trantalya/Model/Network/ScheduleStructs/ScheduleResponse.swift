@@ -14,6 +14,7 @@ struct ScheduleResponse: Decodable {
 
 struct PathlistResponse: Decodable {
     let displayRouteCode: String
+    let direction: RouteDirection
     let scheduleList: [Schedule]
 }
 

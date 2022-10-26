@@ -30,6 +30,9 @@
 		829A19232904501C00D85174 /* ScheduleSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A19222904501C00D85174 /* ScheduleSkeletonView.swift */; };
 		829A1926290451EE00D85174 /* SkeletonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 829A1925290451EE00D85174 /* SkeletonUI */; };
 		829A19292904554200D85174 /* BaseSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A19282904554200D85174 /* BaseSkeletonView.swift */; };
+		829A192B29090BA000D85174 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A192A29090BA000D85174 /* DayType.swift */; };
+		829A192D29090CF900D85174 /* RouteDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A192C29090CF900D85174 /* RouteDirection.swift */; };
+		829A192F2909323800D85174 /* RouteSingleSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A192E2909323800D85174 /* RouteSingleSchedule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		829A192029043EB400D85174 /* TimeColorResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeColorResolver.swift; sourceTree = "<group>"; };
 		829A19222904501C00D85174 /* ScheduleSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSkeletonView.swift; sourceTree = "<group>"; };
 		829A19282904554200D85174 /* BaseSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSkeletonView.swift; sourceTree = "<group>"; };
+		829A192A29090BA000D85174 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
+		829A192C29090CF900D85174 /* RouteDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDirection.swift; sourceTree = "<group>"; };
+		829A192E2909323800D85174 /* RouteSingleSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSingleSchedule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +230,8 @@
 				829A19142901B30E00D85174 /* ScheduleResponse.swift */,
 				829A19102901AC2F00D85174 /* Schedule.swift */,
 				829A19122901AC5900D85174 /* Time.swift */,
+				829A192A29090BA000D85174 /* DayType.swift */,
+				829A192C29090CF900D85174 /* RouteDirection.swift */,
 			);
 			path = ScheduleStructs;
 			sourceTree = "<group>";
@@ -232,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				829A191729027FCD00D85174 /* RouteSchedule.swift */,
+				829A192E2909323800D85174 /* RouteSingleSchedule.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -400,10 +409,13 @@
 				829A19292904554200D85174 /* BaseSkeletonView.swift in Sources */,
 				829A191F29043E3900D85174 /* TimeColorResolverProtocol.swift in Sources */,
 				829A18F328FDB6FF00D85174 /* BusListResponse.swift in Sources */,
+				829A192F2909323800D85174 /* RouteSingleSchedule.swift in Sources */,
+				829A192D29090CF900D85174 /* RouteDirection.swift in Sources */,
 				829A19152901B30E00D85174 /* ScheduleResponse.swift in Sources */,
 				829A191A2902828800D85174 /* TimeTag.swift in Sources */,
 				829A192129043EB400D85174 /* TimeColorResolver.swift in Sources */,
 				829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */,
+				829A192B29090BA000D85174 /* DayType.swift in Sources */,
 				829A19132901AC5900D85174 /* Time.swift in Sources */,
 				829A19112901AC2F00D85174 /* Schedule.swift in Sources */,
 				829A18F128FDB5BB00D85174 /* Route.swift in Sources */,

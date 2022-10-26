@@ -9,5 +9,5 @@ import Foundation
 
 struct RouteSchedule {
     let routeName: String
-    let schedule: [String]
+    let schedule: [DayType: [String]]
 }

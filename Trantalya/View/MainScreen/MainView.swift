@@ -13,6 +13,7 @@ struct MainView: View {
     @State private var routeSchedules = [RouteSchedule]()
     @State private var isLoading = false
     private let timeColorResolver = TimeColorResolver()
+    @State private var selectedDayType: DayType = .businessDays
    
     var body: some View {
         NavigationView {
@@ -21,9 +22,21 @@ struct MainView: View {
                 if routeSchedules.isEmpty && isLoading {
                     ScheduleSkeletonView()
                 } else {
+                    Picker("Day of week", selection: $selectedDayType) {
+                        ForEach(DayType.allCases, id: \.self) {
+                            Text($0.stringValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .padding()
+                    
                     ForEach(routeSchedules, id: \.routeName) {
                         RouteScheduleView(
-                            routeSchedule: $0,
+                            routeSchedule:
+                                RouteSingleSchedule(
+                                    name: $0.routeName,
+                                    times: $0.schedule[selectedDayType] ?? []
+                                ),
                             timeColorResolver: timeColorResolver
                         )
                     }

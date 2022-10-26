@@ -75,15 +75,23 @@ final class MainSession: MainSessionProtocol {
         let decoder = JSONDecoder()
         let scheduleResponse = try decoder.decode(ScheduleResponse.self, from: data)
         let routeName = scheduleResponse.pathList.first?.displayRouteCode ?? ""
-        let times = scheduleResponse.pathList.first?.scheduleList
-            .filter({ $0.days == .businessDays })
-            .first?.timeList
-            .map {
+        
+        let schedules = scheduleResponse.pathList
+            .flatMap { $0.scheduleList }
+        var outputSchedule = [DayType: [String]]()
+        schedules.forEach {
+            let dayType = $0.days
+            let times = $0.timeList.map {
                 $0.departureTime.split(separator: ":").prefix(2).joined(separator: ":")
             }
+            var value = outputSchedule[dayType] ?? []
+            value.append(contentsOf: times)
+            outputSchedule[dayType] = value
+        }
+        
         return RouteSchedule(
             routeName: routeName,
-            schedule: times ?? []
+            schedule: outputSchedule
         )
     }
 }

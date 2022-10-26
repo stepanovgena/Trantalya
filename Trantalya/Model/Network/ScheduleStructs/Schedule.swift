@@ -17,10 +17,4 @@ struct Schedule: Decodable {
         case description
         case timeList
     }
-
-    enum DayType: String, Codable {
-        case businessDays = "1"
-        case saturday = "2"
-        case sunday = "3"
-    }
 }
