@@ -7,17 +7,23 @@
 
 import Foundation
 
+/// Server response with schedule-related data
 struct ScheduleResponse: Decodable {
     let pathList: [PathlistResponse]
     let result: RequestResult
 }
 
+/// Path info
 struct PathlistResponse: Decodable {
     let displayRouteCode: String
     let direction: RouteDirection
     let scheduleList: [Schedule]
+    let busList: [MapBus]
+    let busStopList: [MapStop]
+    let pointList: [Vertex]
 }
 
+/// Request result info
 struct RequestResult: Decodable {
     let cmd: String
     let code: Int

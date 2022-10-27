@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Route info
 struct Route: Decodable {
     let routeCode: String
     let displayRouteCode: String

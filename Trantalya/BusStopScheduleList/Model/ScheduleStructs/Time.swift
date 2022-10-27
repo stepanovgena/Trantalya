@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Timetable time
 struct Time: Decodable {
     let departureTime: String
 }

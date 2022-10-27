@@ -14,6 +14,7 @@ struct BusStopScheduleList: View {
     @State private var isLoading = false
     private let timeColorResolver = TimeColorResolver()
     @State private var selectedDayType: DayType = .businessDays
+    @FocusState private var isInputFocused: Bool
    
     var body: some View {
         NavigationView {
@@ -49,15 +50,18 @@ struct BusStopScheduleList: View {
                     "Input your stop ID",
                     text: $busStopInput
                 )
+                .focused($isInputFocused)
                 .padding()
                 .keyboardType(.numberPad)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
                 .textFieldStyle(.roundedBorder)
                 .onSubmit {
+                    isInputFocused = false
                     loadData(stopId: busStopInput)
                 }
                 Button("Submit") {
+                    isInputFocused = false
                     loadData(stopId: busStopInput)
                 }
                 .buttonStyle(.borderedProminent)

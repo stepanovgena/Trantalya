@@ -33,6 +33,12 @@
 		829A192B29090BA000D85174 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A192A29090BA000D85174 /* DayType.swift */; };
 		829A192D29090CF900D85174 /* RouteDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A192C29090CF900D85174 /* RouteDirection.swift */; };
 		829A192F2909323800D85174 /* RouteSingleSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A192E2909323800D85174 /* RouteSingleSchedule.swift */; };
+		829A193929096D3100D85174 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A193829096D3100D85174 /* Vertex.swift */; };
+		829A193B29096DB500D85174 /* MapBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A193A29096DB500D85174 /* MapBus.swift */; };
+		829A193D2909728D00D85174 /* MapStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A193C2909728D00D85174 /* MapStop.swift */; };
+		829A193F29098E0A00D85174 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A193E29098E0A00D85174 /* MapData.swift */; };
+		829A194129098F7D00D85174 /* BusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A194029098F7D00D85174 /* BusMapView.swift */; };
+		829A194329098FD900D85174 /* BusDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A194229098FD900D85174 /* BusDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +87,12 @@
 		829A192A29090BA000D85174 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
 		829A192C29090CF900D85174 /* RouteDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDirection.swift; sourceTree = "<group>"; };
 		829A192E2909323800D85174 /* RouteSingleSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSingleSchedule.swift; sourceTree = "<group>"; };
+		829A193829096D3100D85174 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		829A193A29096DB500D85174 /* MapBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBus.swift; sourceTree = "<group>"; };
+		829A193C2909728D00D85174 /* MapStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStop.swift; sourceTree = "<group>"; };
+		829A193E29098E0A00D85174 /* MapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
+		829A194029098F7D00D85174 /* BusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusMapView.swift; sourceTree = "<group>"; };
+		829A194229098FD900D85174 /* BusDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +146,7 @@
 			children = (
 				829A1933290935F500D85174 /* Shared */,
 				829A1930290934DD00D85174 /* BusStopScheduleList */,
+				829A19352909368C00D85174 /* RouteDetails */,
 				829A18C028FC71E000D85174 /* TrantalyaApp.swift */,
 				829A18C428FC71E100D85174 /* Assets.xcassets */,
 				829A18C628FC71E100D85174 /* Preview Content */,
@@ -222,13 +235,13 @@
 			path = ScheduleStructs;
 			sourceTree = "<group>";
 		};
-		829A191629027FAD00D85174 /* ViewModel */ = {
+		829A191629027FAD00D85174 /* ViewData */ = {
 			isa = PBXGroup;
 			children = (
 				829A191729027FCD00D85174 /* RouteSchedule.swift */,
 				829A192E2909323800D85174 /* RouteSingleSchedule.swift */,
 			);
-			path = ViewModel;
+			path = ViewData;
 			sourceTree = "<group>";
 		};
 		829A191D29043DF300D85174 /* Utils */ = {
@@ -253,7 +266,7 @@
 			children = (
 				829A1932290935C500D85174 /* Model */,
 				829A19312909356E00D85174 /* View */,
-				829A191629027FAD00D85174 /* ViewModel */,
+				829A191629027FAD00D85174 /* ViewData */,
 			);
 			path = BusStopScheduleList;
 			sourceTree = "<group>";
@@ -285,6 +298,35 @@
 				829A18F628FEEA8200D85174 /* Model */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		829A19352909368C00D85174 /* RouteDetails */ = {
+			isa = PBXGroup;
+			children = (
+				829A1937290936C200D85174 /* View */,
+				829A1936290936A400D85174 /* Model */,
+			);
+			path = RouteDetails;
+			sourceTree = "<group>";
+		};
+		829A1936290936A400D85174 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				829A193829096D3100D85174 /* Vertex.swift */,
+				829A193A29096DB500D85174 /* MapBus.swift */,
+				829A193C2909728D00D85174 /* MapStop.swift */,
+				829A193E29098E0A00D85174 /* MapData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		829A1937290936C200D85174 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				829A194029098F7D00D85174 /* BusMapView.swift */,
+				829A194229098FD900D85174 /* BusDetailsView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,11 +465,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				829A193D2909728D00D85174 /* MapStop.swift in Sources */,
 				829A18F528FDEE1900D85174 /* Bus.swift in Sources */,
 				829A191C290283B500D85174 /* RouteScheduleView.swift in Sources */,
 				829A19232904501C00D85174 /* ScheduleSkeletonView.swift in Sources */,
 				829A191829027FCD00D85174 /* RouteSchedule.swift in Sources */,
 				829A18C328FC71E000D85174 /* BusStopScheduleList.swift in Sources */,
+				829A193929096D3100D85174 /* Vertex.swift in Sources */,
 				829A18EE28FC745B00D85174 /* MainSession.swift in Sources */,
 				829A18EC28FC729100D85174 /* MainSessionProtocol.swift in Sources */,
 				829A19292904554200D85174 /* BaseSkeletonView.swift in Sources */,
@@ -435,7 +479,11 @@
 				829A18F328FDB6FF00D85174 /* BusListResponse.swift in Sources */,
 				829A192F2909323800D85174 /* RouteSingleSchedule.swift in Sources */,
 				829A192D29090CF900D85174 /* RouteDirection.swift in Sources */,
+				829A194129098F7D00D85174 /* BusMapView.swift in Sources */,
 				829A19152901B30E00D85174 /* ScheduleResponse.swift in Sources */,
+				829A193B29096DB500D85174 /* MapBus.swift in Sources */,
+				829A193F29098E0A00D85174 /* MapData.swift in Sources */,
+				829A194329098FD900D85174 /* BusDetailsView.swift in Sources */,
 				829A191A2902828800D85174 /* TimeTag.swift in Sources */,
 				829A192129043EB400D85174 /* TimeColorResolver.swift in Sources */,
 				829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */,
@@ -609,6 +657,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -638,6 +687,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

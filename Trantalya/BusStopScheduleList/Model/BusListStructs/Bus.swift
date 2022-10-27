@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Bus info
 struct Bus: Decodable {
     let routeCode: String
     let displayRouteCode: String

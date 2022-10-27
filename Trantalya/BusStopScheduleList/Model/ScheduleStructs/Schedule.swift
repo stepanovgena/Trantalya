@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Schedule info
 struct Schedule: Decodable {
     let description: String
     let days: DayType
