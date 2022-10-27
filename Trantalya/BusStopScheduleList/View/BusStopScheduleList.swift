@@ -12,9 +12,9 @@ struct BusStopScheduleList: View {
     @State private var routes = [Route]()
     @State private var routeSchedules = [RouteSchedule]()
     @State private var isLoading = false
-    private let timeColorResolver = TimeColorResolver()
     @State private var selectedDayType: DayType = .businessDays
     @FocusState private var isInputFocused: Bool
+    private let timeColorResolver = TimeColorResolver()
    
     var body: some View {
         NavigationView {
