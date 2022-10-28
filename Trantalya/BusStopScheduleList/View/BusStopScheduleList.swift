@@ -15,6 +15,10 @@ struct BusStopScheduleList: View {
     @State private var selectedDayType: DayType = .businessDays
     @FocusState private var isInputFocused: Bool
     private let timeColorResolver = TimeColorResolver()
+    private let session = MainSession(
+        session: URLSession.shared,
+        urlFactory: UrlFactory()
+    )
    
     var body: some View {
         NavigationView {
@@ -31,15 +35,27 @@ struct BusStopScheduleList: View {
                     .pickerStyle(.segmented)
                     .padding()
                     
-                    ForEach(routeSchedules, id: \.routeName) {
-                        RouteScheduleView(
-                            routeSchedule:
-                                RouteSingleSchedule(
-                                    name: $0.routeName,
-                                    times: $0.schedule[selectedDayType] ?? []
-                                ),
-                            timeColorResolver: timeColorResolver
-                        )
+                    ForEach(routeSchedules, id: \.routeName) { schedule in
+                        NavigationLink (destination:
+                                            BusDetailsView(
+                                                routeId: schedule.routeName,
+                                                stopId: busStopInput,
+                                                mapDataProvider: MapDataProvider(
+                                                    session: session,
+                                                    pollingInterval: 5
+                                                )
+                                            )
+                        ) {
+                            RouteScheduleView(
+                                routeSchedule:
+                                    RouteSingleSchedule(
+                                        name: schedule.routeName,
+                                        times: schedule.schedule[selectedDayType] ?? []
+                                    ),
+                                timeColorResolver: timeColorResolver
+                            )
+                        }
+                        .foregroundColor(.primary)
                     }
                 }
             }
@@ -78,11 +94,7 @@ struct BusStopScheduleList: View {
     
     func loadData(stopId: String) {
         isLoading = true
-        let session = MainSession(
-            session: URLSession.shared,
-            urlFactory: UrlFactory()
-        )
-            Task {
+        Task {
             do {
                 let routes = try await session.getStopRoutes(id: stopId)
                 try await withThrowingTaskGroup(of: RouteSchedule.self, body: { group in

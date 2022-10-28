@@ -13,8 +13,11 @@ struct MapBus: Decodable {
     let lat: String
     let lng: String
     let plateNumber: String
-    let stopDiff: String
+    let stopDiff: String?
     let ac: String
     let bike: String
-    let timeDiff: Int
+//    Backend really bad with timeDiff,
+//    same structure in two requests except in one it's String, in the other it's an Int
+//    let timeDiff: Int
+//    let timeDiff: Int
 }

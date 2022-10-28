@@ -51,6 +51,55 @@ final class MainSession: MainSessionProtocol {
     }
     
     func getRouteSchedule(routeId: String, stopId: String) async throws -> RouteSchedule {
+        let pathList = try await getPathListResponse(routeId: routeId, stopId: stopId)
+        let routeName = pathList.first?.displayRouteCode ?? ""
+        let schedules = pathList.flatMap { $0.scheduleList }
+        var outputSchedule = [DayType: [String]]()
+        schedules.forEach {
+            let dayType = $0.days
+            let times = $0.timeList.map {
+                $0.departureTime
+                    .split(separator: ":")
+                    .prefix(2)
+                    .joined(separator: ":")
+            }
+            var value = outputSchedule[dayType] ?? []
+            value.append(contentsOf: times)
+            outputSchedule[dayType] = value
+        }
+        
+        return RouteSchedule(
+            routeName: routeName,
+            schedule: outputSchedule
+        )
+    }
+    
+    func getMapData(routeId: String, stopId: String) async throws -> [MapData] {
+        let pathList = try await getPathListResponse(routeId: routeId, stopId: stopId)
+        return pathList.map {
+            MapData(
+                vertices: $0.pointList,
+                busList: $0.busList,
+                stopList: $0.busStopList
+            )
+        }
+    }
+}
+
+private extension MainSession {
+    func makeDefaultParams() -> [(String, String)] {
+        [
+            ("accuracy", "0"),
+            ("authType", "0"),
+            ("lang", "tr"),
+            ("lat", "0"),
+            ("lng", "0"),
+            ("nfcSupport", "0"),
+            ("region", "026"),
+        ]
+    }
+    
+    func getPathListResponse(routeId: String, stopId: String) async throws -> [PathlistResponse] {
         let params = makeDefaultParams() +
         [
             ("displayRouteCode", routeId),
@@ -73,45 +122,14 @@ final class MainSession: MainSessionProtocol {
         }
         let decoder = JSONDecoder()
         let scheduleResponse = try decoder.decode(ScheduleResponse.self, from: data)
-        let routeName = scheduleResponse.pathList.first?.displayRouteCode ?? ""
-        
-        let schedules = scheduleResponse.pathList
-            .flatMap { $0.scheduleList }
-        var outputSchedule = [DayType: [String]]()
-        schedules.forEach {
-            let dayType = $0.days
-            let times = $0.timeList.map {
-                $0.departureTime.split(separator: ":").prefix(2).joined(separator: ":")
-            }
-            var value = outputSchedule[dayType] ?? []
-            value.append(contentsOf: times)
-            outputSchedule[dayType] = value
-        }
-        
-        return RouteSchedule(
-            routeName: routeName,
-            schedule: outputSchedule
-        )
-    }
-}
-
-private extension MainSession {
-    func makeDefaultParams() -> [(String, String)] {
-        [
-            ("accuracy", "0"),
-            ("authType", "0"),
-            ("lang", "tr"),
-            ("lat", "0"),
-            ("lng", "0"),
-            ("nfcSupport", "0"),
-            ("region", "026"),
-        ]
+        return scheduleResponse.pathList
     }
 }
 
 enum NetworkError: String, Error {
     case urlError
     case responseCodeError
+    case parsingError
 }
 
 protocol UrlFactoryProtocol {
