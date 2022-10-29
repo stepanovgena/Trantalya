@@ -62,15 +62,15 @@ private extension BusMapView {
         mapView.addAnnotations(stops)
         
         // draw bus
-        if let bus = mapDataProvider.mapData?.busList.first {
-            let busPin = BusAnnotation()
-            let coord = CLLocationCoordinate2D(
-                latitude: Double(bus.lat) ?? 36,
-                longitude: Double(bus.lng) ?? 30
+        let buses = mapDataProvider.mapData?.busList.map {
+            BusAnnotation(
+                coordinate: CLLocationCoordinate2D(
+                    latitude: Double($0.lat) ?? 36,
+                    longitude: Double($0.lng) ?? 30
+                )
             )
-            busPin.coordinate = coord
-            mapView.addAnnotation(busPin)
-        }
+        } ?? []
+        mapView.addAnnotations(buses)
         
         if !locations.isEmpty && mapDataProvider.zoomSetRequired {
             setMapZoomArea(

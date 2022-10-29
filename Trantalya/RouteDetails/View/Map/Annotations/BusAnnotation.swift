@@ -13,4 +13,8 @@ final class BusAnnotation: NSObject, MKAnnotation {
     @objc dynamic var coordinate = CLLocationCoordinate2D(latitude: 36.77, longitude: 30.11)
     var title: String?
     var subtitle: String?
+    
+    init(coordinate: CLLocationCoordinate2D) {
+        self.coordinate = coordinate
+    }
 }
