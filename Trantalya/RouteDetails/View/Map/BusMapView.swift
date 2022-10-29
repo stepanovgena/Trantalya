@@ -43,20 +43,34 @@ private extension BusMapView {
         
         let edgeInsets = UIEdgeInsets(top: 30.0, left: 30.0, bottom: 30.0, right: 30.0)
         
+        // draw route
         mapView.removeOverlays(mapView.overlays)
         let polyline = MKPolyline(coordinates: locations, count: locations.count)
         mapView.addOverlay(polyline)
+        
         mapView.removeAnnotations(mapView.annotations)
         
-        let busPin = BusAnnotation()
-        let bus = mapDataProvider.mapData?.busList.first
-        let coord = CLLocationCoordinate2D(
-            latitude: Double(bus?.lat ?? "") ?? 36,
-            longitude: Double(bus?.lng ?? "") ?? 30
-        )
+        // draw stops
+        let stops = mapDataProvider.mapData?.stopList.map {
+            StopAnnotation(
+                coordinate: CLLocationCoordinate2D(
+                    latitude: Double($0.lat) ?? 36,
+                    longitude: Double($0.lng) ?? 30
+                )
+            )
+        } ?? []
+        mapView.addAnnotations(stops)
         
-        busPin.coordinate = coord
-        mapView.addAnnotation(busPin)
+        // draw bus
+        if let bus = mapDataProvider.mapData?.busList.first {
+            let busPin = BusAnnotation()
+            let coord = CLLocationCoordinate2D(
+                latitude: Double(bus.lat) ?? 36,
+                longitude: Double(bus.lng) ?? 30
+            )
+            busPin.coordinate = coord
+            mapView.addAnnotation(busPin)
+        }
         
         if !locations.isEmpty && mapDataProvider.zoomSetRequired {
             setMapZoomArea(
@@ -85,6 +99,10 @@ private extension BusMapView {
         mapView.register(
             MKAnnotationView.self,
             forAnnotationViewWithReuseIdentifier: NSStringFromClass(BusAnnotation.self)
+        )
+        mapView.register(
+            MKAnnotationView.self,
+            forAnnotationViewWithReuseIdentifier: NSStringFromClass(StopAnnotation.self)
         )
     }
 }
