@@ -21,6 +21,7 @@ struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapData
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
+        registerAnnotations(mapView: mapView)
         mapView.showsUserLocation = true
         mapView.delegate = context.coordinator
         return mapView
@@ -29,8 +30,10 @@ struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapData
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<BusMapView>) {
         updateOverlays(from: uiView)
     }
+}
     
-    private func updateOverlays(from mapView: MKMapView) {
+private extension BusMapView {
+    func updateOverlays(from mapView: MKMapView) {
         let locations = mapDataProvider.mapData?.vertices.map {
             CLLocationCoordinate2D(
                 latitude: Double($0.lat) ?? 36,
@@ -45,7 +48,7 @@ struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapData
         mapView.addOverlay(polyline)
         mapView.removeAnnotations(mapView.annotations)
         
-        let busPin = MKPointAnnotation()
+        let busPin = BusAnnotation()
         let bus = mapDataProvider.mapData?.busList.first
         let coord = CLLocationCoordinate2D(
             latitude: Double(bus?.lat ?? "") ?? 36,
@@ -64,8 +67,8 @@ struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapData
             )
         }
     }
-        
-    private func setMapZoomArea(
+    
+    func setMapZoomArea(
         map: MKMapView,
         polyline: MKPolyline,
         edgeInsets: UIEdgeInsets,
@@ -75,6 +78,13 @@ struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapData
             polyline.boundingMapRect,
             edgePadding: edgeInsets,
             animated: animated
+        )
+    }
+    
+    func registerAnnotations(mapView: MKMapView) {
+        mapView.register(
+            MKAnnotationView.self,
+            forAnnotationViewWithReuseIdentifier: NSStringFromClass(BusAnnotation.self)
         )
     }
 }

@@ -25,4 +25,31 @@ final class BusMapViewCoordinator: NSObject, MKMapViewDelegate {
       renderer.lineWidth = 3.0
       return renderer
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            return nil
+        }
+        
+        if let annotation = annotation as? BusAnnotation {
+            return makeBusAnnotationView(annotation: annotation, mapView: mapView)
+        }
+        
+        return nil
+    }
 }
+
+private extension BusMapViewCoordinator {
+    func makeBusAnnotationView(
+        annotation: BusAnnotation,
+        mapView: MKMapView
+    ) -> MKAnnotationView {
+        let reuseIdentifier = NSStringFromClass(BusAnnotation.self)
+        let busAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
+        busAnnotationView.canShowCallout = false
+        busAnnotationView.image = UIImage(systemName: "bus.fill")?.withTintColor(.blue, renderingMode: .alwaysOriginal)
+        return busAnnotationView
+    }
+}
+
+

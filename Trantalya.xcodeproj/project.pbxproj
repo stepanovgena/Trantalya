@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8218EA6B290D8C0000EB6A95 /* BusAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218EA6A290D8C0000EB6A95 /* BusAnnotation.swift */; };
 		829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C028FC71E000D85174 /* TrantalyaApp.swift */; };
 		829A18C328FC71E000D85174 /* BusStopScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C228FC71E000D85174 /* BusStopScheduleList.swift */; };
 		829A18C528FC71E100D85174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829A18C428FC71E100D85174 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8218EA6A290D8C0000EB6A95 /* BusAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusAnnotation.swift; sourceTree = "<group>"; };
 		829A18BD28FC71E000D85174 /* Trantalya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trantalya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		829A18C028FC71E000D85174 /* TrantalyaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrantalyaApp.swift; sourceTree = "<group>"; };
 		829A18C228FC71E000D85174 /* BusStopScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopScheduleList.swift; sourceTree = "<group>"; };
@@ -129,6 +131,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8218EA69290D8BF000EB6A95 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				8218EA6A290D8C0000EB6A95 /* BusAnnotation.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
 		829A18B428FC71E000D85174 = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +354,7 @@
 			children = (
 				829A194029098F7D00D85174 /* BusMapView.swift */,
 				829A1944290A773B00D85174 /* BusMapViewCoordinator.swift */,
+				8218EA69290D8BF000EB6A95 /* Annotations */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -514,6 +525,7 @@
 				829A191F29043E3900D85174 /* TimeColorResolverProtocol.swift in Sources */,
 				829A1945290A773B00D85174 /* BusMapViewCoordinator.swift in Sources */,
 				829A18F328FDB6FF00D85174 /* BusListResponse.swift in Sources */,
+				8218EA6B290D8C0000EB6A95 /* BusAnnotation.swift in Sources */,
 				829A192F2909323800D85174 /* RouteSingleSchedule.swift in Sources */,
 				829A192D29090CF900D85174 /* RouteDirection.swift in Sources */,
 				829A194129098F7D00D85174 /* BusMapView.swift in Sources */,
