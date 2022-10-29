@@ -11,6 +11,7 @@ import CoreLocation
 /// Obtaining data for map and bus info
 protocol MapDataProviderProtocol: ObservableObject {
     var mapData: MapData? { get }
+    var zoomSetRequired: Bool { get }
     func startPolling(routeId: String, stopId: String)
     func stopPolling()
 }

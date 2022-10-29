@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 /// Coordinator for bridging UIKit to SwiftUI view
-final class BusMapViewCoordinator: NSObject, MKMapViewDelegate {    
+final class BusMapViewCoordinator: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
       if let annotationView = views.first, let annotation = annotationView.annotation {
         if annotation is MKUserLocation {

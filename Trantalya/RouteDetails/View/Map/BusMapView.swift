@@ -10,7 +10,6 @@ import MapKit
 
 struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapDataProviderProtocol {
     @ObservedObject private var mapDataProvider: DataProvider
-    @State private var zoomSet = false
     
     init(mapDataProvider: DataProvider) {
         self.mapDataProvider = mapDataProvider
@@ -56,8 +55,7 @@ struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapData
         busPin.coordinate = coord
         mapView.addAnnotation(busPin)
         
-        if !locations.isEmpty && !zoomSet {
-            zoomSet = true
+        if !locations.isEmpty && mapDataProvider.zoomSetRequired {
             setMapZoomArea(
                 map: mapView,
                 polyline: polyline,

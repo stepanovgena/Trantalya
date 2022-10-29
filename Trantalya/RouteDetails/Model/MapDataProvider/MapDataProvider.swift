@@ -10,9 +10,18 @@ import CoreLocation
 
 /// Obtains data for map and bus info
 final class MapDataProvider: MapDataProviderProtocol {
+    @Published var mapData: MapData?
+    var zoomSetRequired: Bool {
+        if zoomUpdateCounter > 0 {
+            zoomUpdateCounter -= 1
+            return true
+        } else {
+            return false
+        }
+    }
+    private var zoomUpdateCounter = 1
     private var timer: Timer?
     private let session: MainSessionProtocol
-    @Published var mapData: MapData?
     private let pollingInterval: TimeInterval
     
     init(
