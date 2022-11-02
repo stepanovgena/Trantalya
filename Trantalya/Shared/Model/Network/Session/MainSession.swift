@@ -75,12 +75,21 @@ final class MainSession: MainSessionProtocol {
     }
     
     func getMapData(routeId: String, stopId: String) async throws -> [MapData] {
-        let pathList = try await getPathListResponse(routeId: routeId, stopId: stopId)
+        let pathList = try await getPathListResponse(routeId: routeId, stopId: "")
         return pathList.map {
             MapData(
                 vertices: $0.pointList,
                 busList: $0.busList,
-                stopList: $0.busStopList
+                stopList: $0.busStopList.map { stop in
+                    MapStop(
+                        seq: stop.seq,
+                        lat: stop.lat,
+                        lng: stop.lng,
+                        stopId: stop.stopId,
+                        stopName: stop.stopName,
+                        isSelected: stop.stopId == stopId
+                    )
+                }
             )
         }
     }

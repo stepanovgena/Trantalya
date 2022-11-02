@@ -45,6 +45,8 @@
 		829A194C290A9B2100D85174 /* BusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A194B290A9B2100D85174 /* BusInfoView.swift */; };
 		829A1953290BCC9E00D85174 /* MapDataProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A1952290BCC9E00D85174 /* MapDataProviderProtocol.swift */; };
 		829A1955290BCCAE00D85174 /* MapDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A1954290BCCAE00D85174 /* MapDataProvider.swift */; };
+		82FB6BF029129554005D6C36 /* MapStopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FB6BEF29129554005D6C36 /* MapStopResponse.swift */; };
+		82FB6BF229129F12005D6C36 /* BusListErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FB6BF129129F12005D6C36 /* BusListErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		829A194B290A9B2100D85174 /* BusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusInfoView.swift; sourceTree = "<group>"; };
 		829A1952290BCC9E00D85174 /* MapDataProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataProviderProtocol.swift; sourceTree = "<group>"; };
 		829A1954290BCCAE00D85174 /* MapDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataProvider.swift; sourceTree = "<group>"; };
+		82FB6BEF29129554005D6C36 /* MapStopResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStopResponse.swift; sourceTree = "<group>"; };
+		82FB6BF129129F12005D6C36 /* BusListErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +303,7 @@
 				829A19192902828800D85174 /* TimeTag.swift */,
 				829A191B290283B500D85174 /* RouteScheduleView.swift */,
 				829A18C228FC71E000D85174 /* BusStopScheduleList.swift */,
+				82FB6BF129129F12005D6C36 /* BusListErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				829A193829096D3100D85174 /* Vertex.swift */,
 				829A193A29096DB500D85174 /* MapBus.swift */,
 				829A193C2909728D00D85174 /* MapStop.swift */,
+				82FB6BEF29129554005D6C36 /* MapStopResponse.swift */,
 				829A193E29098E0A00D85174 /* MapData.swift */,
 			);
 			path = Model;
@@ -525,7 +531,9 @@
 				829A18EE28FC745B00D85174 /* MainSession.swift in Sources */,
 				829A18EC28FC729100D85174 /* MainSessionProtocol.swift in Sources */,
 				829A19292904554200D85174 /* BaseSkeletonView.swift in Sources */,
+				82FB6BF229129F12005D6C36 /* BusListErrorView.swift in Sources */,
 				829A191F29043E3900D85174 /* TimeColorResolverProtocol.swift in Sources */,
+				82FB6BF029129554005D6C36 /* MapStopResponse.swift in Sources */,
 				829A1945290A773B00D85174 /* BusMapViewCoordinator.swift in Sources */,
 				829A18F328FDB6FF00D85174 /* BusListResponse.swift in Sources */,
 				8218EA6B290D8C0000EB6A95 /* BusAnnotation.swift in Sources */,
@@ -708,6 +716,8 @@
 				DEVELOPMENT_TEAM = TQK53PF52L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "Enabling location shows yourself on the map";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Enabling location shows yourself on the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -738,6 +748,8 @@
 				DEVELOPMENT_TEAM = TQK53PF52L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "Enabling location shows yourself on the map";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Enabling location shows yourself on the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

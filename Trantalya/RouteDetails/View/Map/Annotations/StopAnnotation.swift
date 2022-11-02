@@ -10,11 +10,16 @@ import MapKit
 
 /// Stop marker to be displayed on the map
 final class StopAnnotation: NSObject, MKAnnotation {
-    @objc dynamic var coordinate = CLLocationCoordinate2D(latitude: 36.77, longitude: 30.11)
+    @objc dynamic var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
+    let isSelected: Bool
     
-    init(coordinate: CLLocationCoordinate2D) {
+    init(
+        coordinate: CLLocationCoordinate2D,
+        isSelected: Bool
+    ) {
         self.coordinate = coordinate
+        self.isSelected = isSelected
     }
 }

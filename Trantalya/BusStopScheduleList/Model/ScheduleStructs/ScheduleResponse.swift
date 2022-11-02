@@ -19,7 +19,7 @@ struct PathlistResponse: Decodable {
     let direction: RouteDirection
     let scheduleList: [Schedule]
     let busList: [MapBus]
-    let busStopList: [MapStop]
+    let busStopList: [MapStopResponse]
     let pointList: [Vertex]
 }
 

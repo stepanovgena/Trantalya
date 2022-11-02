@@ -41,7 +41,7 @@ final class MapDataProvider: MapDataProviderProtocol {
                 
                 Task.detached {
                     do {
-                        let fetchedMapData = try await self.session.getMapData(routeId: routeId, stopId: "")
+                        let fetchedMapData = try await self.session.getMapData(routeId: routeId, stopId: stopId)
                         let result = fetchedMapData.filter {
                             $0.stopList.contains {
                                 $0.stopId == stopId

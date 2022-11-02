@@ -12,6 +12,7 @@ struct BusStopScheduleList: View {
     @State private var routes = [Route]()
     @State private var routeSchedules = [RouteSchedule]()
     @State private var isLoading = false
+    @State private var isError = false
     @State private var selectedDayType: DayType = .businessDays
     @FocusState private var isInputFocused: Bool
     private let timeColorResolver = TimeColorResolver()
@@ -22,71 +23,77 @@ struct BusStopScheduleList: View {
    
     var body: some View {
         NavigationView {
-        VStack {
-            ScrollView{
-                if routeSchedules.isEmpty && isLoading {
-                    ScheduleSkeletonView()
-                } else {
-                    Picker("Day of week", selection: $selectedDayType) {
-                        ForEach(DayType.allCases, id: \.self) {
-                            Text($0.stringValue)
+            VStack {
+                if isError {
+                    Spacer()
+                    BusListErrorView()
+                } else  {
+                    ScrollView {
+                        
+                        if routeSchedules.isEmpty && isLoading {
+                            ScheduleSkeletonView()
+                        } else {
+                            Picker("Day of week", selection: $selectedDayType) {
+                                ForEach(DayType.allCases, id: \.self) {
+                                    Text($0.stringValue)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .padding()
+                            
+                            ForEach(routeSchedules, id: \.routeName) { schedule in
+                                NavigationLink (destination:
+                                                    BusDetailsView(
+                                                        routeId: schedule.routeName,
+                                                        stopId: busStopInput,
+                                                        mapDataProvider: MapDataProvider(
+                                                            session: session,
+                                                            pollingInterval: 5
+                                                        )
+                                                    )
+                                ) {
+                                    RouteScheduleView(
+                                        routeSchedule:
+                                            RouteSingleSchedule(
+                                                name: schedule.routeName,
+                                                times: schedule.schedule[selectedDayType] ?? []
+                                            ),
+                                        timeColorResolver: timeColorResolver
+                                    )
+                                }
+                                .foregroundColor(.primary)
+                            }
                         }
                     }
-                    .pickerStyle(.segmented)
+                }
+                Spacer()
+                Divider()
+                HStack {
+                    TextField(
+                        "Input your stop ID",
+                        text: $busStopInput
+                    )
+                    .focused($isInputFocused)
                     .padding()
-                    
-                    ForEach(routeSchedules, id: \.routeName) { schedule in
-                        NavigationLink (destination:
-                                            BusDetailsView(
-                                                routeId: schedule.routeName,
-                                                stopId: busStopInput,
-                                                mapDataProvider: MapDataProvider(
-                                                    session: session,
-                                                    pollingInterval: 5
-                                                )
-                                            )
-                        ) {
-                            RouteScheduleView(
-                                routeSchedule:
-                                    RouteSingleSchedule(
-                                        name: schedule.routeName,
-                                        times: schedule.schedule[selectedDayType] ?? []
-                                    ),
-                                timeColorResolver: timeColorResolver
-                            )
-                        }
-                        .foregroundColor(.primary)
+                    .keyboardType(.numberPad)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                    .textFieldStyle(.roundedBorder)
+                    .onSubmit {
+                        isInputFocused = false
+                        loadData(stopId: busStopInput)
                     }
+                    Button("Submit") {
+                        isInputFocused = false
+                        loadData(stopId: busStopInput)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.blue)
+                    .padding(.vertical)
+                    .tint(.primary)
                 }
-            }
-            Spacer()
-            Divider()
-            HStack {
-                TextField(
-                    "Input your stop ID",
-                    text: $busStopInput
-                )
-                .focused($isInputFocused)
                 .padding()
-                .keyboardType(.numberPad)
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
-                .textFieldStyle(.roundedBorder)
-                .onSubmit {
-                    isInputFocused = false
-                    loadData(stopId: busStopInput)
-                }
-                Button("Submit") {
-                    isInputFocused = false
-                    loadData(stopId: busStopInput)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.blue)
-                .padding(.vertical)
-                .tint(.primary)
             }
-            .padding()
-        }
         .navigationTitle("Schedule")
         .navigationBarTitleDisplayMode(.large)
         }
@@ -94,6 +101,7 @@ struct BusStopScheduleList: View {
     
     func loadData(stopId: String) {
         isLoading = true
+        isError = false
         Task {
             do {
                 let routes = try await session.getStopRoutes(id: stopId)
@@ -119,6 +127,7 @@ struct BusStopScheduleList: View {
                 })
             }
             catch {
+                isError = true
                 print(error)
             }
         }

@@ -9,9 +9,11 @@ import Foundation
 import MapKit
 
 /// Constants used in file
-enum Constants {
+fileprivate enum Constants {
     static var busCircleSize: CGFloat { 44 }
     static var busSize: CGFloat { 28 }
+    static var stopIconSize: CGFloat { 16 }
+    static var selectedStopIconSize: CGFloat { 20 }
 }
 
 /// Coordinator for bridging UIKit to SwiftUI view
@@ -90,9 +92,20 @@ private extension BusMapViewCoordinator {
         let reuseIdentifier = NSStringFromClass(StopAnnotation.self)
         let stopAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
         stopAnnotationView.canShowCallout = false
-        guard let stopImage = UIImage(systemName: "smallcircle.filled.circle.fill")?.withTintColor(.blue, renderingMode: .alwaysOriginal) else { return MKAnnotationView() }
-        let size = CGSize(width: 16, height: 16)
-        stopAnnotationView.image = UIGraphicsImageRenderer(size: size).image { _ in stopImage.draw(in: CGRect(origin:.zero, size: size))
+        let imageName = annotation.isSelected
+        ? "smallcircle.circle.fill"
+        : "smallcircle.filled.circle.fill"
+        let iconSize: CGFloat = annotation.isSelected
+        ? Constants.selectedStopIconSize
+        : Constants.stopIconSize
+        let color: UIColor = annotation.isSelected
+        ? .red
+        : .blue
+        guard let stopImage = UIImage(systemName: imageName)?
+            .withTintColor(color, renderingMode: .alwaysOriginal)
+        else { return MKAnnotationView() }
+        let size = CGSize(width: iconSize, height: iconSize)
+        stopAnnotationView.image = UIGraphicsImageRenderer(size: size).image { _ in stopImage.draw(in: CGRect(origin: .zero, size: size))
         }
         return stopAnnotationView
     }

@@ -14,4 +14,5 @@ struct MapStop: Decodable {
     let lng: String
     let stopId: String
     let stopName: String
+    let isSelected: Bool
 }

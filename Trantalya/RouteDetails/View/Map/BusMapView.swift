@@ -10,6 +10,7 @@ import MapKit
 
 struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapDataProviderProtocol {
     @ObservedObject private var mapDataProvider: DataProvider
+    private let locationManager = CLLocationManager()
     
     init(mapDataProvider: DataProvider) {
         self.mapDataProvider = mapDataProvider
@@ -22,8 +23,9 @@ struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapData
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         registerAnnotations(mapView: mapView)
-        mapView.showsUserLocation = true
         mapView.delegate = context.coordinator
+        setupLocationManager()
+        mapView.showsUserLocation = true
         return mapView
     }
     
@@ -33,6 +35,13 @@ struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapData
 }
     
 private extension BusMapView {
+    func setupLocationManager() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
+    }
+    
     func updateOverlays(from mapView: MKMapView) {
         let locations = mapDataProvider.mapData?.vertices.map {
             CLLocationCoordinate2D(
@@ -56,7 +65,8 @@ private extension BusMapView {
                 coordinate: CLLocationCoordinate2D(
                     latitude: Double($0.lat) ?? 36,
                     longitude: Double($0.lng) ?? 30
-                )
+                ),
+                isSelected: $0.isSelected
             )
         } ?? []
         mapView.addAnnotations(stops)
