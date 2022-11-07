@@ -68,3 +68,6 @@ private extension BusDetailsViewTests {
         }
     }
 }
+
+extension BusDetailsView: Inspectable { }
+extension BusMapView: Inspectable { }

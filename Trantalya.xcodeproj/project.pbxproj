@@ -10,7 +10,6 @@
 		8218EA6B290D8C0000EB6A95 /* BusAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218EA6A290D8C0000EB6A95 /* BusAnnotation.swift */; };
 		8218EA6D290DA30700EB6A95 /* StopAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218EA6C290DA30700EB6A95 /* StopAnnotation.swift */; };
 		825F323729192585001988F3 /* BusDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F323629192585001988F3 /* BusDetailsViewTests.swift */; };
-		825F323D2919663C001988F3 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 825F323C2919663C001988F3 /* ViewInspector */; };
 		829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C028FC71E000D85174 /* TrantalyaApp.swift */; };
 		829A18C328FC71E000D85174 /* BusStopScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C228FC71E000D85174 /* BusStopScheduleList.swift */; };
 		829A18C528FC71E100D85174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829A18C428FC71E100D85174 /* Assets.xcassets */; };
@@ -47,6 +46,7 @@
 		829A194C290A9B2100D85174 /* BusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A194B290A9B2100D85174 /* BusInfoView.swift */; };
 		829A1953290BCC9E00D85174 /* MapDataProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A1952290BCC9E00D85174 /* MapDataProviderProtocol.swift */; };
 		829A1955290BCCAE00D85174 /* MapDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A1954290BCCAE00D85174 /* MapDataProvider.swift */; };
+		82F2329929197BEA00264D7C /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 82F2329829197BEA00264D7C /* ViewInspector */; };
 		82FB6BF029129554005D6C36 /* MapStopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FB6BEF29129554005D6C36 /* MapStopResponse.swift */; };
 		82FB6BF229129F12005D6C36 /* BusListErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FB6BF129129F12005D6C36 /* BusListErrorView.swift */; };
 /* End PBXBuildFile section */
@@ -120,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				829A1926290451EE00D85174 /* SkeletonUI in Frameworks */,
-				825F323D2919663C001988F3 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82F2329929197BEA00264D7C /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +173,7 @@
 				829A18D028FC71E100D85174 /* TrantalyaTests */,
 				829A18DA28FC71E100D85174 /* TrantalyaUITests */,
 				829A18BE28FC71E000D85174 /* Products */,
+				82F2329729197BEA00264D7C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -406,6 +407,13 @@
 			path = MapDataProvider;
 			sourceTree = "<group>";
 		};
+		82F2329729197BEA00264D7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -424,7 +432,6 @@
 			name = Trantalya;
 			packageProductDependencies = (
 				829A1925290451EE00D85174 /* SkeletonUI */,
-				825F323C2919663C001988F3 /* ViewInspector */,
 			);
 			productName = Trantalya;
 			productReference = 829A18BD28FC71E000D85174 /* Trantalya.app */;
@@ -444,6 +451,9 @@
 				829A18CF28FC71E100D85174 /* PBXTargetDependency */,
 			);
 			name = TrantalyaTests;
+			packageProductDependencies = (
+				82F2329829197BEA00264D7C /* ViewInspector */,
+			);
 			productName = TrantalyaTests;
 			productReference = 829A18CD28FC71E100D85174 /* TrantalyaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -803,6 +813,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TQK53PF52L;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
@@ -823,6 +834,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TQK53PF52L;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
@@ -932,15 +944,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		825F323C2919663C001988F3 /* ViewInspector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 825F323B2919663C001988F3 /* XCRemoteSwiftPackageReference "ViewInspector" */;
-			productName = ViewInspector;
-		};
 		829A1925290451EE00D85174 /* SkeletonUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 829A1924290451EE00D85174 /* XCRemoteSwiftPackageReference "SkeletonUI" */;
 			productName = SkeletonUI;
+		};
+		82F2329829197BEA00264D7C /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 825F323B2919663C001988F3 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
