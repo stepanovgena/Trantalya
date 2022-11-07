@@ -70,7 +70,7 @@ struct BusStopScheduleList: View {
                 Divider()
                 HStack {
                     TextField(
-                        "Input your stop ID",
+                        "Stop ID, e.g. 10090",
                         text: $busStopInput
                     )
                     .focused($isInputFocused)

@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct BusDetailsView: View {
+struct BusDetailsView<DataProvider>: View where DataProvider: MapDataProviderProtocol {
     private var routeId: String
     private let stopId: String
-    private let mapDataProvider: MapDataProvider
+    private let mapDataProvider: DataProvider
     
     init(
         routeId: String,
         stopId: String,
-        mapDataProvider: MapDataProvider
+        mapDataProvider: DataProvider
     ) {
         self.routeId = routeId
         self.stopId = stopId

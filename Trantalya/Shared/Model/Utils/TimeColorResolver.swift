@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// Utility to get color for timeline
+/// - Tag: TimeColorResolver
+/// [tests] (x-source-tag://TimeColorResolverTests) entity
 struct TimeColorResolver: TimeColorResolverProtocol {
     func getColorForTime(time: String, referenceDate: Date) -> TimeColor {
         let calendar = Calendar(identifier: .gregorian)
