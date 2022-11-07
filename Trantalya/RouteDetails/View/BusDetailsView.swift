@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import ViewInspector
 
-struct BusDetailsView<DataProvider>: View where DataProvider: MapDataProviderProtocol {
+struct BusDetailsView<DataProvider>:
+    Inspectable,
+    View where DataProvider: MapDataProviderProtocol {
     private var routeId: String
     private let stopId: String
     private let mapDataProvider: DataProvider

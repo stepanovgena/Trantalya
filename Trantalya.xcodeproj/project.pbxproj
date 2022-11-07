@@ -10,6 +10,7 @@
 		8218EA6B290D8C0000EB6A95 /* BusAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218EA6A290D8C0000EB6A95 /* BusAnnotation.swift */; };
 		8218EA6D290DA30700EB6A95 /* StopAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218EA6C290DA30700EB6A95 /* StopAnnotation.swift */; };
 		825F323729192585001988F3 /* BusDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F323629192585001988F3 /* BusDetailsViewTests.swift */; };
+		825F323D2919663C001988F3 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 825F323C2919663C001988F3 /* ViewInspector */; };
 		829A18C128FC71E000D85174 /* TrantalyaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C028FC71E000D85174 /* TrantalyaApp.swift */; };
 		829A18C328FC71E000D85174 /* BusStopScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A18C228FC71E000D85174 /* BusStopScheduleList.swift */; };
 		829A18C528FC71E100D85174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829A18C428FC71E100D85174 /* Assets.xcassets */; };
@@ -119,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				829A1926290451EE00D85174 /* SkeletonUI in Frameworks */,
+				825F323D2919663C001988F3 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +148,22 @@
 				8218EA6C290DA30700EB6A95 /* StopAnnotation.swift */,
 			);
 			path = Annotations;
+			sourceTree = "<group>";
+		};
+		825F323E29197376001988F3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				829A18D128FC71E100D85174 /* TimeColorResolverTests.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		825F323F2919738D001988F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				825F323629192585001988F3 /* BusDetailsViewTests.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		829A18B428FC71E000D85174 = {
@@ -192,8 +210,8 @@
 		829A18D028FC71E100D85174 /* TrantalyaTests */ = {
 			isa = PBXGroup;
 			children = (
-				829A18D128FC71E100D85174 /* TimeColorResolverTests.swift */,
-				825F323629192585001988F3 /* BusDetailsViewTests.swift */,
+				825F323F2919738D001988F3 /* View */,
+				825F323E29197376001988F3 /* Utils */,
 			);
 			path = TrantalyaTests;
 			sourceTree = "<group>";
@@ -406,6 +424,7 @@
 			name = Trantalya;
 			packageProductDependencies = (
 				829A1925290451EE00D85174 /* SkeletonUI */,
+				825F323C2919663C001988F3 /* ViewInspector */,
 			);
 			productName = Trantalya;
 			productReference = 829A18BD28FC71E000D85174 /* Trantalya.app */;
@@ -481,6 +500,7 @@
 			mainGroup = 829A18B428FC71E000D85174;
 			packageReferences = (
 				829A1924290451EE00D85174 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
+				825F323B2919663C001988F3 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = 829A18BE28FC71E000D85174 /* Products */;
 			projectDirPath = "";
@@ -631,6 +651,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -691,6 +712,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -891,6 +913,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		825F323B2919663C001988F3 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
 		829A1924290451EE00D85174 /* XCRemoteSwiftPackageReference "SkeletonUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CSolanaM/SkeletonUI.git";
@@ -902,6 +932,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		825F323C2919663C001988F3 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 825F323B2919663C001988F3 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
 		829A1925290451EE00D85174 /* SkeletonUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 829A1924290451EE00D85174 /* XCRemoteSwiftPackageReference "SkeletonUI" */;

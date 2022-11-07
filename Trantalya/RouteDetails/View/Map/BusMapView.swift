@@ -7,8 +7,11 @@
 
 import SwiftUI
 import MapKit
+import ViewInspector
 
-struct BusMapView<DataProvider>: UIViewRepresentable where DataProvider: MapDataProviderProtocol {
+struct BusMapView<DataProvider>:
+    Inspectable,
+    UIViewRepresentable where DataProvider: MapDataProviderProtocol {
     @ObservedObject private var mapDataProvider: DataProvider
     private let locationManager = CLLocationManager()
     
